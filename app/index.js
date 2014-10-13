@@ -43,6 +43,7 @@ var BrisketGenerator = yeoman.generators.Base.extend({
       this.src.copy('_Gruntfile.js', 'Gruntfile.js');
       this.src.copy('server.js', 'server.js');
       this.src.copy('_package.json', 'package.json');
+      this.src.copy('README.md', 'README.md');
     },
 
     projectfiles: function () {
