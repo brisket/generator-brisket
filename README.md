@@ -1,4 +1,4 @@
-# generator-brisket [![Build Status](https://secure.travis-ci.org/wawjr3d/generator-brisket.png?branch=master)](https://travis-ci.org/wawjr3d/generator-brisket)
+# generator-brisket
 
 > [Brisket](http://github.com/bloomberg/brisket) generator
 
