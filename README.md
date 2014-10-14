@@ -4,6 +4,9 @@
 
 
 ## Getting Started
+Brisket requires that `phantomjs` is installed on your machine. You can find instructions [here](http://phantomjs.org/download.html).
+
+Once `phantomjs` is installed, install [Yeoman](http://yeoman.io):
 
 ```bash
 npm install -g yo
