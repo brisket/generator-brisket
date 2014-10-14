@@ -9,7 +9,7 @@
 npm install -g yo
 ```
 
-To install generator-brisket from npm, run (TODO: upload to npm):
+To install generator-brisket from npm, run:
 
 ```bash
 npm install -g generator-brisket
