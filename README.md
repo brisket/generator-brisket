@@ -15,11 +15,13 @@ To install generator-brisket from npm, run:
 npm install -g generator-brisket
 ```
 
-Finally, initiate the generator:
+Finally, initiate the generator and run your app:
 
 ```bash
-yo brisket
+yo brisket && grunt
 ```
+
+Your first brisket app will be available at http://localhost:8080
 
 ## License
 
