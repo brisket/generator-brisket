@@ -12,8 +12,8 @@ var SidesRouter = RouterBrewery.create({
         'sides/vegetables/:type': 'eatGreens'
     },
 
-    eatMacAndCheese: function(howMuch) {
-        return new MacAndCheeseView({ howMuch: howMuch });
+    eatMacAndCheese: function() {
+        return new MacAndCheeseView();
     },
 
     eatGreens: function(type) {
