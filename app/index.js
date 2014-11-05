@@ -1,10 +1,12 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
 var BrisketGenerator = yeoman.generators.Base.extend({
+
   initializing: function () {
     this.pkg = require('../package.json');
   },
@@ -16,19 +18,6 @@ var BrisketGenerator = yeoman.generators.Base.extend({
     this.log(yosay(
       'Welcome to the exceptional Brisket generator!'
     ));
-
-    // var prompts = [{
-    //   type: 'confirm',
-    //   name: 'someOption',
-    //   message: 'Would you like to enable this option?',
-    //   default: true
-    // }];
-
-    // this.prompt(prompts, function (props) {
-    //   this.someOption = props.someOption;
-
-    //   done();
-    // }.bind(this));
 
     done();
   },
@@ -54,6 +43,7 @@ var BrisketGenerator = yeoman.generators.Base.extend({
   end: function () {
     this.installDependencies();
   }
+
 });
 
 module.exports = BrisketGenerator;
