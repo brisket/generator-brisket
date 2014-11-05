@@ -1,6 +1,6 @@
 {
   "name": "generator-brisket",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Brisket generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -20,7 +20,11 @@
     "app"
   ],
   "keywords": [
-    "brisket-generator"
+    "yeoman-generator",
+    "scaffold",
+    "isomorphic",
+    "SPA",
+    "brisket"
   ],
   "dependencies": {
     "yeoman-generator": "^0.17.0",
