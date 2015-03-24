@@ -12,7 +12,7 @@ var ClientApp = Brisket.ClientApp.extend({
 
         // do client-only app set up here
         console.log('My favorite town is ' + environmentConfig.favoriteTown);
-        console.log('ClientApp has started');
+        console.log('ClientApp has started with Brisket version ' + Brisket.version);
     }
 
 });
