@@ -1,19 +1,26 @@
 {
-	"name": "plate-o-brisket",
-	"version": "0.1.0",
-	"description": "My first brisket app",
-	"author": "Your name",
-	"main": "server.js",
-	"dependencies": {
-		"brisket": "*",
-		"express": "*"
-	},
-	"devDependencies": {
+    "name": "plate-o-brisket",
+    "version": "0.1.0",
+    "description": "My first brisket app",
+    "author": "Your name",
+    "main": "server.js",
+    "dependencies": {
+        "brisket": "*",
+        "express": "*"
+    },
+    "devDependencies": {
         "grunt-concurrent": "~0.5.0",
-        "grunt-browserify": "~1.3.2",
-		"grunt-contrib-clean": "~0.5.0",
-		"grunt-contrib-watch": "~0.6.1",
-		"nodemon": "~1.2.1",
-		"grunt-exec": "~0.4.6"
-	}
+        "grunt-browserify": "~3.5.1",
+        "browserify-shim": "^3.8.3",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-watch": "~0.6.1",
+        "nodemon": "~1.2.1",
+        "grunt-exec": "~0.4.6"
+    },
+    "browserify-shim": {
+        "./node_modules/brisket/node_modules/jquery-mockjax/jquery.mockjax.js": {
+            "exports": "jquery-mockjax",
+            "depends": ["jquery:jQuery"]
+        }
+    }
 }
