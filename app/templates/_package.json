@@ -16,11 +16,5 @@
         "grunt-contrib-watch": "~0.6.1",
         "nodemon": "~1.2.1",
         "grunt-exec": "~0.4.6"
-    },
-    "browserify-shim": {
-        "./node_modules/brisket/node_modules/jquery-mockjax/jquery.mockjax.js": {
-            "exports": "jquery-mockjax",
-            "depends": ["jquery:jQuery"]
-        }
     }
 }
