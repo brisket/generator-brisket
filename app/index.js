@@ -7,11 +7,11 @@ var yosay = require('yosay');
 
 var BrisketGenerator = yeoman.generators.Base.extend({
 
-  initializing: function () {
+  initializing: function() {
     this.pkg = require('../package.json');
   },
 
-  prompting: function () {
+  prompting: function() {
     var done = this.async();
 
     // Have Yeoman greet the user.
@@ -23,25 +23,58 @@ var BrisketGenerator = yeoman.generators.Base.extend({
   },
 
   writing: {
-    app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
-
+    app: function() {
       this.directory('app', 'app');
       this.directory('public', 'public');
-      this.src.copy('_Gruntfile.js', 'Gruntfile.js');
-      this.src.copy('server.js', 'server.js');
-      this.src.copy('_package.json', 'package.json');
-      this.src.copy('README.md', 'README.md');
+
+      this.fs.copy(
+        this.templatePath('_Gruntfile.js'),
+        this.destinationPath('Gruntfile.js'), {}
+      );
+
+      this.fs.copy(
+        this.templatePath('server.js'),
+        this.destinationPath('server.js'), {}
+      );
+
+      this.fs.copy(
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json'), {}
+      );
+
+      this.fs.copy(
+        this.templatePath('README.md'),
+        this.destinationPath('README.md'), {}
+      );
     },
 
-    projectfiles: function () {
-      this.src.copy('gitignore', '.gitignore');
+    projectfiles: function() {
+      this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore'), {}
+      );
     }
   },
 
-  end: function () {
-    this.installDependencies();
+  end: function() {
+    this.npmInstall([
+      'brisket',
+      'express'
+    ], {
+      'save': true
+    });
+
+    this.npmInstall([
+      'grunt',
+      'grunt-browserify',
+      'grunt-concurrent',
+      'grunt-contrib-clean',
+      'grunt-contrib-watch',
+      'grunt-exec',
+      'nodemon'
+    ], {
+      'saveDev': true
+    });
   }
 
 });
