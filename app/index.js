@@ -65,6 +65,7 @@ var BrisketGenerator = yeoman.generators.Base.extend({
     });
 
     this.npmInstall([
+      'grunt-cli',
       'grunt',
       'grunt-browserify',
       'grunt-concurrent',
