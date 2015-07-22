@@ -43,6 +43,7 @@ var app = express()
         // add properties here that you want to expose to ServerApp
         //  and ClientApp
         environmentConfig: {
+            clientAppUrl: '/javascripts/application.js',
             favoriteTown: 'Brisket Town'
         },
 
