@@ -1,6 +1,7 @@
 'use strict';
 
 var Metatags = require('brisket').Layout.Metatags;
+var OpenGraphTags = require('brisket').Layout.OpenGraphTags;
 var RouterBrewery = require('../routing/RouterBrewery');
 var HomeView = require('./HomeView');
 
@@ -16,13 +17,17 @@ var HomeRouter = RouterBrewery.create({
 
         return new HomeView()
             .withTitle(title)
-            .withMetatags(new Metatags({
-                'description': description,
-                'og:title': title,
-                'og:description': description,
-                'twitter:title': title,
-                'twitter:description': description
-            }));
+            .withMetatags([
+                new Metatags({
+                    'description': description,
+                    'twitter:title': title,
+                    'twitter:description': description
+                }),
+                new OpenGraphTags({
+                    'og:title': title,
+                    'og:description': description
+                })
+            ]);
     }
 
 });

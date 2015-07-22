@@ -16,9 +16,11 @@ var SidesRouter = RouterBrewery.create({
     eatMacAndCheese: function() {
         return new MacAndCheeseView()
             .withTitle('Mac and Cheese')
-            .withMetatags(new Metatags({
-                'description': 'Keep calm and eat Mac and Cheese'
-            }));
+            .withMetatags([
+                new Metatags({
+                    'description': 'Keep calm and eat Mac and Cheese'
+                })
+            ]);
     },
 
     eatGreens: function(type) {

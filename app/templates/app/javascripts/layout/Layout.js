@@ -19,7 +19,6 @@ var Layout = Brisket.Layout.extend({
         '<body>\n' +
             '<div id="content">\n' +
             '</div>\n' +
-            '<script type="text/javascript" src="/javascripts/application.js"></script>\n' +
         '</body>\n' +
         '</html>\n',
 
