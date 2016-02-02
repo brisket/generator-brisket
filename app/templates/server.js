@@ -34,6 +34,8 @@ var app = express()
     )
 
     .use(Brisket.createServer({
+        debug: true,
+
         apiHost: 'http://localhost:' + PORT,
 
         clientAppRequirePath: 'app/ClientApp',

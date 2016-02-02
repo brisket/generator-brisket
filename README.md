@@ -2,6 +2,7 @@
 
 > [Brisket](http://github.com/bloomberg/brisket) generator
 
+<img src="http://i.imgur.com/1oFnYKW.jpg">
 
 ## Getting Started
 Install [Yeoman](http://yeoman.io):
@@ -29,7 +30,9 @@ Finally, initiate the generator and run your app:
 yo brisket && npm start
 ```
 
-Your first brisket app will be available at http://localhost:8080
+Your first brisket app will be available at **http://localhost:8080**
+
+To debug on the client side, you can use the Chrome extension [Backbone Debugger](https://chrome.google.com/webstore/detail/backbone-debugger/bhljhndlimiafopmmhjlgfpnnchjjbhd?hl=en)
 
 ## License
 
