@@ -1,71 +1,83 @@
-'use strict';
+import express from 'express';
+import Brisket from 'brisket';
+import ServerApp from './app/javascripts/server/ServerApp';
 
-var express = require('express');
-var Brisket = require('brisket');
+const PORT = process.env.PORT || 8080;
+const LIVERELOAD_PORT = 35729;
 
-var PORT = process.env.PORT || 8080;
-var SIDE_DATA = {
-    'green-bean-casserole': {
-        name: 'Green Bean Casserole',
-        url: 'http://www.rpfit.com/wp-content/uploads/2012/05/green-bean-casserole.jpg'
-    },
-    'polenta': {
-        name: 'Polenta',
-        url: 'http://www.mezzetta.com/uploads/recipes/MZ_RecipeImage_Creamy_Polenta.png'
-    }
+const SIDE_DATA = {
+  'green-bean-casserole': {
+    name: 'Green Bean Casserole',
+    url: 'http://www.rpfit.com/wp-content/uploads/2012/05/green-bean-casserole.jpg'
+  },
+  'polenta': {
+    name: 'Polenta',
+    url: 'http://www.mezzetta.com/uploads/recipes/MZ_RecipeImage_Creamy_Polenta.png'
+  }
 };
 
-var app = express()
+const app = express()
 
-    .use(express.static(__dirname + '/public'))
+  .use(express.static(__dirname + '/public'))
 
-    .use('/api', express.Router()
+  .use(require('connect-livereload')({ port: LIVERELOAD_PORT }))
 
-        .get('/side/:type', function(request, response) {
-            var side = SIDE_DATA[request.params.type];
+  .use('/api', express.Router()
 
-            if (!side) {
-                response.status(404).json({ missing: 'side' });
-            }
+    .get('/side/:type', function(request, response) {
+      var side = SIDE_DATA[request.params.type];
 
-            response.json(side);
-        })
+      if (!side) {
+        response.status(404).json({ missing: 'side' });
+      }
 
-    )
-
-    .use(Brisket.createServer({
-        debug: true,
-
-        apiHost: 'http://localhost:' + PORT,
-
-        clientAppRequirePath: 'app/ClientApp',
-
-        ServerApp: require('./app/javascripts/server/ServerApp'),
-
-        // add properties here that you want to expose to ServerApp
-        //  and ClientApp
-        environmentConfig: {
-            clientAppUrl: '/javascripts/application.js',
-            favoriteTown: 'Brisket Town'
-        },
-
-        // add properties that you only want to expose to the ServerApp
-        serverConfig: {
-            favoriteServer: 'a plate'
-        },
-
-        onRouteHandled: function(options) {
-            console.log("Original request was for: " + options.request.path);
-            console.log("Responded to matched route: " + options.route);
-        }
-
-    }))
-
-    .use(function(request, response) {
-        response.status(500).sendfile(__dirname + '/public/unrecoverable-error.html');
+      response.json(side);
     })
+
+  )
+
+  .use(Brisket.createServer({
+    debug: true,
+
+    apiHost: 'http://localhost:' + PORT,
+
+    clientAppRequirePath: 'app/ClientApp',
+
+    ServerApp: ServerApp,
+
+    // add properties here that you want to expose to ServerApp
+    //  and ClientApp
+    environmentConfig: {
+      clientAppUrl: '/javascripts/application.js',
+      favoriteTown: 'Brisket Town'
+    },
+
+    // add properties that you only want to expose to the ServerApp
+    serverConfig: {
+      favoriteServer: 'a plate'
+    },
+
+    onRouteHandled: function(options) {
+      console.log('Original request was for: ' + options.request.path);
+      console.log('Responded to matched route: ' + options.route);
+    }
+
+  }))
+
+  .use(function(request, response) {
+    response.status(500).sendfile(__dirname + '/public/unrecoverable-error.html');
+  })
 ;
 
-
 app.listen(PORT);
-console.log("Brisket app is listening on port: %s", PORT);
+
+console.log('Brisket app is listening on port: %s', PORT);
+
+require('http').get({
+  hostname: 'localhost',
+  port: LIVERELOAD_PORT,
+  path: '/changed?files=server.js',
+}, function() {
+}).on('error', function() {
+  console.log('could not start livereload :(');
+});

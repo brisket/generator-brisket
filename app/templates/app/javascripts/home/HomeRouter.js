@@ -1,35 +1,34 @@
-'use strict';
+import { Layout } from 'brisket';
+import RouterBrewery from '../routing/RouterBrewery';
+import HomeView from './HomeView';
 
-var Metatags = require('brisket').Layout.Metatags;
-var OpenGraphTags = require('brisket').Layout.OpenGraphTags;
-var RouterBrewery = require('../routing/RouterBrewery');
-var HomeView = require('./HomeView');
+const { OpenGraphTags, Metatags } = Layout;
 
-var HomeRouter = RouterBrewery.create({
+const HomeRouter = RouterBrewery.create({
 
-    routes: {
-        '': 'home'
-    },
+  routes: {
+    '': 'home'
+  },
 
-    home: function() {
-        var description = 'This is the homepage for your first Brisket site';
-        var title = 'Welcome to your first Brisket site!';
+  home() {
+    const description = 'This is the homepage for your first Brisket site';
+    const title = 'Welcome to your first Brisket site!';
 
-        return new HomeView()
-            .withTitle(title)
-            .withMetatags([
-                new Metatags({
-                    'description': description,
-                    'twitter:title': title,
-                    'twitter:description': description
-                }),
-                new OpenGraphTags({
-                    'og:title': title,
-                    'og:description': description
-                })
-            ]);
-    }
+    return new HomeView()
+      .withTitle(title)
+      .withMetatags([
+        new Metatags({
+          'description': description,
+          'twitter:title': title,
+          'twitter:description': description
+        }),
+        new OpenGraphTags({
+          'og:title': title,
+          'og:description': description
+        })
+      ]);
+  }
 
 });
 
-module.exports = HomeRouter;
+export default HomeRouter;

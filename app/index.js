@@ -28,8 +28,13 @@ var BrisketGenerator = yeoman.generators.Base.extend({
       this.directory('public', 'public');
 
       this.fs.copy(
-        this.templatePath('_Gruntfile.js'),
-        this.destinationPath('Gruntfile.js'), {}
+        this.templatePath('_gulpfile.js'),
+        this.destinationPath('gulpfile.js'), {}
+      );
+
+      this.fs.copy(
+        this.templatePath('bootstrap.js'),
+        this.destinationPath('bootstrap.js'), {}
       );
 
       this.fs.copy(
@@ -50,6 +55,11 @@ var BrisketGenerator = yeoman.generators.Base.extend({
 
     projectfiles: function() {
       this.fs.copy(
+        this.templatePath('babelrc'),
+        this.destinationPath('.babelrc'), {}
+      );
+
+      this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore'), {}
       );
@@ -65,14 +75,21 @@ var BrisketGenerator = yeoman.generators.Base.extend({
     });
 
     this.npmInstall([
-      'grunt-cli',
-      'grunt',
-      'grunt-browserify',
-      'grunt-concurrent',
-      'grunt-contrib-clean',
-      'grunt-contrib-watch',
-      'grunt-exec',
-      'nodemon'
+      'babel-plugin-add-module-exports',
+      'babel-preset-es2015',
+      'babel-register',
+      'babelify',
+      'browserify',
+      'connect-livereload',
+      'del',
+      'gulp',
+      'gulp-sourcemaps',
+      'gulp-util',
+      'run-sequence',
+      'tiny-lr',
+      'vinyl-buffer',
+      'vinyl-source-stream',
+      'watchify'
     ], {
       'saveDev': true
     });

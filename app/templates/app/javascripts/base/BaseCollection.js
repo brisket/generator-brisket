@@ -1,9 +1,7 @@
-'use strict';
+import Brisket from 'brisket';
 
-var Brisket = require('brisket');
-
-var BaseCollection = Brisket.Collection.extend({
-    // add properties here that you want to expose to all of your Collections
+const BaseCollection = Brisket.Collection.extend({
+  // add properties here that you want to expose to all of your Collections
 });
 
-module.exports = BaseCollection;
+export default BaseCollection;

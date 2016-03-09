@@ -1,13 +1,11 @@
-'use strict';
+import BaseModel from '../base/BaseModel';
 
-var BaseModel = require('../base/BaseModel');
+const Side = BaseModel.extend({
 
-var Side = BaseModel.extend({
+  idAttribute: 'type',
 
-    idAttribute: 'type',
-
-    urlRoot: '/api/side'
+  urlRoot: '/api/side'
 
 });
 
-module.exports = Side;
+export default Side;
