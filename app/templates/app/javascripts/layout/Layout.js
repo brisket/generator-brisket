@@ -1,45 +1,53 @@
-'use strict';
+import Brisket from 'brisket';
+import BaseView from '../base/BaseView';
 
-var Brisket = require('brisket');
-var BaseView = require('../base/BaseView');
+const Layout = Brisket.Layout.extend({
 
-var Layout = Brisket.Layout.extend({
+  defaultTitle: 'Your first Brisket site',
 
-    defaultTitle: 'Your first Brisket site',
+  content: '#content',
 
-    content: '#content',
+  beforeRender() {
+    this.createChildView('header', HeaderView);
+  },
 
-    template:
-        '<!DOCTYPE html>\n' +
-        '<html>\n' +
-        '<head>\n' +
-            '<meta charset="utf-8">\n' +
-            '<title>Your first Brisket site</title>\n' +
-        '</head>\n' +
-        '<body>\n' +
-            '<div id="content">\n' +
-            '</div>\n' +
-        '</body>\n' +
-        '</html>\n',
+  template({ views }) {
+    return `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Your first Brisket site</title>
+      </head>
+      <body>
+        ${views.header}
 
-    beforeRender: function() {
-        this.createChildView(HeaderView)
-            .andPrependItTo('body');
-    }
+        <div id="content"></div>
+      </body>
+      </html>
+    `
+  }
 
 });
 
 var HeaderView = BaseView.extend({
 
-    template: '<header><h1><a href="" class="logo">Brisket</a></h1></header>',
+  template: `
+    <header>
+      <h1>
+        <a href="" class="logo">Brisket</a>
+      </h1>
+    </header>
+  `,
 
-    onDOM: function() {
-        var $logo = this.$('.logo');
-        $logo.fadeOut(function() {
-            $logo.fadeIn();
-        });
-    }
+  onDOM() {
+    const $logo = this.$('.logo');
+
+    $logo.fadeOut(function() {
+        $logo.fadeIn();
+    });
+  }
 
 });
 
-module.exports = Layout;
+export default Layout;

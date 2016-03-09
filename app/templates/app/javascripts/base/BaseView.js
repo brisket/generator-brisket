@@ -1,9 +1,7 @@
-'use strict';
+import Brisket from 'brisket';
 
-var Brisket = require('brisket');
-
-var BaseView = Brisket.View.extend({
-    // add properties here that you want to expose to all of your Views
+const BaseView = Brisket.View.extend({
+  // add properties here that you want to expose to all of your Views
 });
 
-module.exports = BaseView;
+export default BaseView;

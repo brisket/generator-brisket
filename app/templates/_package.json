@@ -5,6 +5,6 @@
     "author": "Your name",
     "main": "server.js",
     "scripts": {
-        "start": "grunt"
+        "start": "gulp"
     }
 }

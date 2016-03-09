@@ -1,11 +1,11 @@
-'use strict';
+import BaseView from '../base/BaseView';
 
-var BaseView = require('../base/BaseView');
+const IMG = 'http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-eat-mac-n-cheese-4.png';
 
-var EatMacAndCheeseView = BaseView.extend({
+const EatMacAndCheeseView = BaseView.extend({
 
-    template: '<img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-eat-mac-n-cheese-4.png" alt="Eat Mac and Cheese">'
+  template: `<img src="${IMG}" alt="Eat Mac and Cheese">`
 
 });
 
-module.exports = EatMacAndCheeseView;
+export default EatMacAndCheeseView;

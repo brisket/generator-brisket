@@ -1,29 +1,30 @@
-'use strict';
+import Brisket from 'brisket';
+import PageNotFoundView from '../errors/PageNotFoundView';
+import DefaultErrorView from '../errors/DefaultErrorView';
+import Layout from '../layout/Layout';
 
-var Brisket = require('brisket');
+const RouterBrewery = Brisket.RouterBrewery.makeBreweryWithDefaults({
 
-var RouterBrewery = Brisket.RouterBrewery.makeBreweryWithDefaults({
-
-	layout: require('../layout/Layout'),
+	layout: Layout,
 
 	errorViewMapping: Brisket.ErrorViewMapping.create({
 
-		404: require('../errors/PageNotFoundView'),
+		404: PageNotFoundView,
 
-		500: require('../errors/DefaultErrorView')
+		500: DefaultErrorView
 
 	}),
 
-    onRouteComplete: function(layout, request) {
-        console.log('ClientApp rendered ' + request.path);
+  onRouteComplete(layout, request) {
+    console.log('ClientApp rendered ' + request.path);
 
-        if (request.isFirstRequest) {
-            return;
-        }
-
-        window.scrollTo(0, 0);
+    if (request.isFirstRequest) {
+      return;
     }
+
+    window.scrollTo(0, 0);
+  }
 
 });
 
-module.exports = RouterBrewery;
+export default RouterBrewery;

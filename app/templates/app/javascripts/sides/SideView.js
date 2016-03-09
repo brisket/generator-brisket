@@ -1,19 +1,21 @@
-'use strict';
+import BaseView from '../base/BaseView';
 
-var BaseView = require('../base/BaseView');
+const SideView = BaseView.extend({
 
-var SideView = BaseView.extend({
+  template({ name }) {
+    return `
+      <section class="side">
+        <h1>${name}</h1>
+      </section>
+    `;
+  },
 
-    template: '<section class="side"><h1></h1></section>',
+  onDOM() {
+    const url = this.model.get('url');
 
-    afterRender: function() {
-        this.$('h1').html(this.model.get('name'));
-    },
-
-    onDOM: function() {
-        this.$('.side').append('<img src="' + this.model.get('url') + '">');
-    }
+    this.$('.side').append(`<img src="${url}">`);
+  }
 
 });
 
-module.exports = SideView;
+export default SideView;

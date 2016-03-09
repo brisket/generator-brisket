@@ -1,24 +1,21 @@
-'use strict';
+import RouterBrewery from '../routing/RouterBrewery';
+import PageNotFoundView from '../errors/PageNotFoundView';
 
-var RouterBrewery = require('../routing/RouterBrewery');
-var PageNotFoundView = require('../errors/PageNotFoundView');
-var DefaultErrorView = require('../errors/DefaultErrorView');
+const ApplicationRouter = RouterBrewery.create({
 
-var ApplicationRouter = RouterBrewery.create({
+  routes: {
+    '*undefined': 'pageNotFound',
+    '500': 'errorPage'
+  },
 
-    routes: {
-        '*undefined': 'pageNotFound',
-        '500': 'errorPage'
-    },
+  pageNotFound: function() {
+    return new PageNotFoundView();
+  },
 
-    pageNotFound: function() {
-        return new PageNotFoundView();
-    },
-
-    errorPage: function() {
-        return new DefaultErrorView();
-    }
+  errorPage: function() {
+    throw new Error('testing what happens when route has an error');
+  }
 
 });
 
-module.exports = ApplicationRouter;
+export default ApplicationRouter;

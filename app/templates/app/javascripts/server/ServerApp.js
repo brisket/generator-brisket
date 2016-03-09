@@ -1,22 +1,17 @@
-'use strict';
+import Brisket from 'brisket';
+import Routers from '../routing/Routers';
 
-var Brisket = require('brisket');
-var Routers = require('../routing/Routers');
+const ServerApp = Brisket.ServerApp.extend({
 
-var ServerApp = Brisket.ServerApp.extend({
+  routers: Routers,
 
-    routers: Routers,
-
-    start: function(options) {
-        var environmentConfig = options.environmentConfig;
-        var serverConfig = options.serverConfig;
-
-        // do server-only app set up here
-        console.log('My favorite town is ' + environmentConfig.favoriteTown);
-        console.log('My favorite server is ' + serverConfig.favoriteServer);
-        console.log('ServerApp has started with Brisket version ' + Brisket.version);
-    }
+  start({ environmentConfig, serverConfig }) {
+    // do server-only app set up here
+    console.log('My favorite town is ' + environmentConfig.favoriteTown);
+    console.log('My favorite server is ' + serverConfig.favoriteServer);
+    console.log('ServerApp has started with Brisket version ' + Brisket.version);
+  }
 
 });
 
-module.exports = ServerApp;
+export default ServerApp;
