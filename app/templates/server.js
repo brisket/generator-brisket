@@ -25,7 +25,7 @@ const app = express()
   .use('/api', express.Router()
 
     .get('/side/:type', function(request, response) {
-      var side = SIDE_DATA[request.params.type];
+      const side = SIDE_DATA[request.params.type];
 
       if (!side) {
         response.status(404).json({ missing: 'side' });

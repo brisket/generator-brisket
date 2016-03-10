@@ -30,7 +30,7 @@ const Layout = Brisket.Layout.extend({
 
 });
 
-var HeaderView = BaseView.extend({
+const HeaderView = BaseView.extend({
 
   template: `
     <header>
