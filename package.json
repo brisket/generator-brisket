@@ -1,6 +1,6 @@
 {
   "name": "generator-brisket",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Brisket generator",
   "license": "MIT",
   "main": "app/index.js",
