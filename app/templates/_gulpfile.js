@@ -38,7 +38,7 @@ gulp.task('bundle', function() {
   bundler.on('update', rebundle);
   bundler.on('log', gutil.log);
 
-  bundler.transform(babelify, { sourceMaps: false });
+  bundler.transform(babelify, { sourceMaps: true });
   bundler.require(CLIENT_APP, { expose: 'app/ClientApp' });
 
   function rebundle() {
