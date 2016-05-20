@@ -13,6 +13,8 @@ const HomeView = BaseView.extend({
     <br>
     <strong>Routes with ajax:</strong>
     <br>
+    <a href="sides/greens">Greens</a>
+    <br>
     <a href="sides/vegetables/green-bean-casserole">Green Bean Casserole</a>
     <br>
     <a href="sides/vegetables/polenta">Polenta</a>

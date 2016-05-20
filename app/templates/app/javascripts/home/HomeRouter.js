@@ -1,10 +1,10 @@
 import { Layout } from 'brisket';
-import RouterBrewery from '../routing/RouterBrewery';
+import BaseRouter from '../routing/BaseRouter';
 import HomeView from './HomeView';
 
 const { OpenGraphTags, Metatags } = Layout;
 
-const HomeRouter = RouterBrewery.create({
+const HomeRouter = BaseRouter.extend({
 
   routes: {
     '': 'home'

@@ -1,16 +1,17 @@
 import { Layout } from 'brisket';
-import RouterBrewery from '../routing/RouterBrewery';
+import BaseRouter from '../routing/BaseRouter';
 import MacAndCheeseView from './MacAndCheeseView';
 import Side from './Side';
 import SideView from './SideView';
 
 const Metatags = Layout.Metatags;
 
-const SidesRouter = RouterBrewery.create({
+const SidesRouter = BaseRouter.extend({
 
   routes: {
     'sides/mac-and-cheese': 'eatMacAndCheese',
-    'sides/vegetables/:type': 'eatGreens'
+    'sides/vegetables/:type': 'eatVegetables',
+    'sides/greens': 'eatGreens',
   },
 
   eatMacAndCheese: function() {
@@ -23,7 +24,11 @@ const SidesRouter = RouterBrewery.create({
       ]);
   },
 
-  eatGreens: function(type) {
+  eatGreens: function() {
+    return this.eatVegetables("greens");
+  },
+
+  eatVegetables: function(type) {
     const side = new Side({ type: type });
 
     return side.fetch()

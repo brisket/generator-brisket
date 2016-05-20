@@ -1,7 +1,7 @@
-import RouterBrewery from '../routing/RouterBrewery';
+import BaseRouter from '../routing/BaseRouter';
 import PageNotFoundView from '../errors/PageNotFoundView';
 
-const ApplicationRouter = RouterBrewery.create({
+const ApplicationRouter = BaseRouter.extend({
 
   routes: {
     '*undefined': 'pageNotFound',

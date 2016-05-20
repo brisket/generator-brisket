@@ -3,7 +3,7 @@ import PageNotFoundView from '../errors/PageNotFoundView';
 import DefaultErrorView from '../errors/DefaultErrorView';
 import Layout from '../layout/Layout';
 
-const RouterBrewery = Brisket.RouterBrewery.makeBreweryWithDefaults({
+const BaseRouter = Brisket.Router.extend({
 
 	layout: Layout,
 
@@ -27,4 +27,4 @@ const RouterBrewery = Brisket.RouterBrewery.makeBreweryWithDefaults({
 
 });
 
-export default RouterBrewery;
+export default BaseRouter;
