@@ -13,6 +13,10 @@ const SIDE_DATA = {
   'polenta': {
     name: 'Polenta',
     url: 'http://www.mezzetta.com/uploads/recipes/MZ_RecipeImage_Creamy_Polenta.png'
+  },
+  'greens': {
+    name: 'Greens',
+    url: 'http://cdn-image.realsimple.com/sites/default/files/styles/rs_photo_gallery_horz/public/image/images/1203/bacon-collard-greens_gal.jpg'
   }
 };
 
