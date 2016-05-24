@@ -3,6 +3,7 @@ import Brisket from 'brisket';
 import ServerApp from './app/javascripts/server/ServerApp';
 
 const PORT = process.env.PORT || 8080;
+const API_PORT = process.env.API_PORT || 8081;
 const LIVERELOAD_PORT = 35729;
 
 const SIDE_DATA = {
@@ -20,30 +21,35 @@ const SIDE_DATA = {
   }
 };
 
+
+const api = express()
+
+  .get('/side/:type', function(request, response) {
+    const side = SIDE_DATA[request.params.type];
+
+    if (!side) {
+      response.status(404).json({ missing: 'side' });
+    }
+
+    response.json(side);
+  })
+
+;
+
 const app = express()
 
   .use(express.static(__dirname + '/public'))
 
   .use(require('connect-livereload')({ port: LIVERELOAD_PORT }))
 
-  .use('/api', express.Router()
-
-    .get('/side/:type', function(request, response) {
-      const side = SIDE_DATA[request.params.type];
-
-      if (!side) {
-        response.status(404).json({ missing: 'side' });
-      }
-
-      response.json(side);
-    })
-
-  )
-
   .use(Brisket.createServer({
     debug: true,
 
-    apiHost: 'http://localhost:' + PORT,
+    apis: {
+      "api": {
+        host: "http://localhost:8081"
+      }
+    },
 
     clientAppRequirePath: 'app/ClientApp',
 
@@ -73,6 +79,8 @@ const app = express()
   })
 ;
 
+
+api.listen(API_PORT);
 app.listen(PORT);
 
 console.log('Brisket app is listening on port: %s', PORT);
