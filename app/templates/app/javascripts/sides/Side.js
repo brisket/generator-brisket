@@ -1,6 +1,6 @@
-import BaseModel from '../base/BaseModel';
+import { Backbone } from 'brisket';
 
-const Side = BaseModel.extend({
+const Side = Backbone.Model.extend({
 
   idAttribute: 'type',
 

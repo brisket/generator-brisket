@@ -8,11 +8,13 @@ const ApplicationRouter = BaseRouter.extend({
     '500': 'errorPage'
   },
 
-  pageNotFound: function() {
+  pageNotFound(missingRoute, layout, request, response) {
+    response.status(404);
+
     return new PageNotFoundView();
   },
 
-  errorPage: function() {
+  errorPage() {
     throw new Error('testing what happens when route has an error');
   }
 
