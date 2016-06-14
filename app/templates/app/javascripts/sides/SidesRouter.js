@@ -14,7 +14,7 @@ const SidesRouter = BaseRouter.extend({
     'sides/greens': 'eatGreens',
   },
 
-  eatMacAndCheese: function() {
+  eatMacAndCheese() {
     return new MacAndCheeseView()
       .withTitle('Mac and Cheese')
       .withMetatags([
@@ -24,11 +24,11 @@ const SidesRouter = BaseRouter.extend({
       ]);
   },
 
-  eatGreens: function() {
+  eatGreens() {
     return this.eatVegetables("greens");
   },
 
-  eatVegetables: function(type) {
+  eatVegetables(type) {
     const side = new Side({ type: type });
 
     return side.fetch()
