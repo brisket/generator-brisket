@@ -79,6 +79,10 @@ const app = express()
   })
 ;
 
+Brisket.onError((error, expressRequest) => {
+  console.error("Error: ", error);
+  console.error("request.referrer: ", expressRequest.url);
+});
 
 api.listen(API_PORT);
 app.listen(PORT);
