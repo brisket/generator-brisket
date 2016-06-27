@@ -68,7 +68,7 @@ var BrisketGenerator = yeoman.generators.Base.extend({
 
   end: function() {
     this.npmInstall([
-      'brisket',
+      'brisket@0.x',
       'express'
     ], {
       'save': true
