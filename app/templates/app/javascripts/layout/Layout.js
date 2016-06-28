@@ -23,6 +23,8 @@ const Layout = Brisket.Layout.extend({
         ${views.header}
 
         <div id="content"></div>
+
+        <script type="text/javascript" src="/javascripts/application.js" async></script>
       </body>
       </html>
     `
