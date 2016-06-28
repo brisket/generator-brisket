@@ -43,6 +43,11 @@ var BrisketGenerator = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
+        this.templatePath('exampleApi.js'),
+        this.destinationPath('exampleApi.js'), {}
+      );
+
+      this.fs.copy(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'), {}
       );
@@ -68,7 +73,7 @@ var BrisketGenerator = yeoman.generators.Base.extend({
 
   end: function() {
     this.npmInstall([
-      'brisket@0.x',
+      'brisket@1.x',
       'express'
     ], {
       'save': true

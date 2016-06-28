@@ -12,8 +12,7 @@ const del = require('del');
 const spawn = require('child_process').spawn;
 const runSequence = require('run-sequence');
 
-const CLIENT_APP = "./app/javascripts/client/ClientApp.js";
-const BUNDLE = "./public/javascripts/application.js";
+const BUNDLE = './public/javascripts/application.js';
 const LIVERELOAD_PORT = 35729;
 
 let server;
@@ -26,7 +25,7 @@ gulp.task('bundle', function() {
   gutil.log(gutil.colors.green('bundling with es6 support'));
 
   const bundleOptions = Object.assign({}, watchify.args, {
-    entries: CLIENT_APP,
+    entries: './app/javascripts/client/initializeClient.js',
     debug: true,
     noparse: ['jquery', 'underscore', 'bluebird']
   });
@@ -39,7 +38,6 @@ gulp.task('bundle', function() {
   bundler.on('log', gutil.log);
 
   bundler.transform(babelify, { sourceMaps: true });
-  bundler.require(CLIENT_APP, { expose: 'app/ClientApp' });
 
   function rebundle() {
     return bundler.bundle()
@@ -56,7 +54,7 @@ gulp.task('bundle', function() {
   return rebundle();
 });
 
-process.on("exit", killServer);
+process.on('exit', killServer);
 
 function startServer() {
   killServer();
@@ -64,7 +62,7 @@ function startServer() {
   server = spawn('node', ['./bootstrap.js'], { stdio: 'inherit' });
 
   server.once('exit', function restart(code) {
-    gutil.log(gutil.colors.red("app errored with code " + code + "\n"));
+    gutil.log(gutil.colors.red('app errored with code ' + code + '\n'));
     startServer();
   });
 }
@@ -85,8 +83,8 @@ gulp.task('watch', function() {
   gulp.watch(BUNDLE, ['server']);
 });
 
-gulp.task("livereload", function() {
-    require("tiny-lr")().listen(LIVERELOAD_PORT);
+gulp.task('livereload', function() {
+    require('tiny-lr')().listen(LIVERELOAD_PORT);
 });
 
 gulp.task('default', function(cb) {

@@ -1,9 +1,9 @@
-import Brisket from 'brisket';
+import { App } from 'brisket';
 import ApplicationRouter from './ApplicationRouter';
 import HomeRouter from '../home/HomeRouter';
 import SidesRouter from '../sides/SidesRouter';
 
-const Routers = Brisket.Routers.toUse({
+App.useRouters({
 
   // this Router includes a catch all i.e. 404 page
   CatchAllRouter: ApplicationRouter,
@@ -15,5 +15,3 @@ const Routers = Brisket.Routers.toUse({
   ]
 
 });
-
-export default Routers;
