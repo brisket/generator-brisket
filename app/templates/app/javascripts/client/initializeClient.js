@@ -7,7 +7,7 @@ App.addClientInitializer(({ environmentConfig }) => {
   console.log('ClientApp has started with Brisket version ' + version);
 
   onError((error, clientRequest) => {
-    console.error("Error: ", error);
+    console.error("Error: ", error.stack || error);
     console.error("request.referrer: ", clientRequest.referrer);
   });
 });
