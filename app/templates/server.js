@@ -41,7 +41,7 @@ const app = express()
 
   }))
 
-  .use(function(request, response) {
+  .use(function(err, request, response, next) {
     response.status(500).sendfile(__dirname + '/public/unrecoverable-error.html');
   })
 ;
