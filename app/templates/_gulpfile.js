@@ -8,6 +8,7 @@ const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
 const watchify = require('watchify');
 const babelify = require('babelify');
+const rollupify = require('rollupify');
 const del = require('del');
 const spawn = require('child_process').spawn;
 const runSequence = require('run-sequence');
@@ -37,6 +38,7 @@ gulp.task('bundle', function() {
   bundler.on('update', rebundle);
   bundler.on('log', gutil.log);
 
+  bundler.transform(rollupify);
   bundler.transform(babelify, { sourceMaps: true });
 
   function rebundle() {
