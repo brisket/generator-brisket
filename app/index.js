@@ -90,7 +90,6 @@ var BrisketGenerator = yeoman.generators.Base.extend({
       'gulp',
       'gulp-sourcemaps',
       'gulp-util',
-      'rollupify',
       'run-sequence',
       'tiny-lr',
       'vinyl-buffer',
