@@ -47,7 +47,7 @@ const app = express()
 ;
 
 Brisket.onError((error, expressRequest) => {
-  console.error('Error: ', error);
+  console.error('Error: ', error.stack || error);
   console.error('request.referrer: ', expressRequest.url);
 });
 
