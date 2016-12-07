@@ -14,7 +14,9 @@ const SidesRouter = BaseRouter.extend({
     'sides/greens': 'eatGreens',
   },
 
-  eatMacAndCheese() {
+  eatMacAndCheese(setLayoutData) {
+    setLayoutData('pageType', 'cheese');
+
     return new MacAndCheeseView()
       .withTitle('Mac and Cheese')
       .withMetatags([
@@ -24,15 +26,21 @@ const SidesRouter = BaseRouter.extend({
       ]);
   },
 
-  eatGreens() {
-    return this.eatVegetables("greens");
+  eatGreens(setLayoutData, request) {
+    return this.eatVegetables('greens', setLayoutData, request);
   },
 
-  eatVegetables(type) {
+  eatVegetables(type, setLayoutData, request) {
     const side = new Side({ type: type });
+
+    request.onComplete(function() {
+        setLayoutData('pageType', 'side-finished');
+    });
 
     return side.fetch()
       .then(function() {
+        setLayoutData('pageType', 'side');
+
         return new SideView({ model: side })
           .withTitle(side.get('name'));
       });

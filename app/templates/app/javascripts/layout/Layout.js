@@ -7,27 +7,37 @@ const Layout = Brisket.Layout.extend({
 
   content: '#content',
 
+  initialize() {
+    this.model.on({
+      'change:pageType': this.updatePageType
+    }, this);
+  },
+
   beforeRender() {
     this.createChildView('header', HeaderView);
   },
 
-  template({ views }) {
+  template({ views, pageType = 'normal' }) {
     return `
       <!DOCTYPE html>
       <html>
       <head>
-        <meta charset="utf-8">
+        <meta charset='utf-8'>
         <title>Your first Brisket site</title>
       </head>
-      <body>
+      <body class='type-${ pageType }'>
         ${views.header}
 
-        <div id="content"></div>
+        <div id='content'></div>
 
-        <script type="text/javascript" src="/javascripts/application.js" async></script>
+        <script type='text/javascript' src='/javascripts/application.js' async></script>
       </body>
       </html>
     `
+  },
+
+  updatePageType(model, pageType = 'normal') {
+    document.body.className = document.body.className.replace(/type-[^\b]+/, `type-${ pageType }`);
   }
 
 });
@@ -37,7 +47,7 @@ const HeaderView = BaseView.extend({
   template: `
     <header>
       <h1>
-        <a href="" class="logo">Brisket</a>
+        <a href='' class='logo'>Brisket</a>
       </h1>
     </header>
   `,
