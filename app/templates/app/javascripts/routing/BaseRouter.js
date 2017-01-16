@@ -5,15 +5,15 @@ import Layout from '../layout/Layout';
 
 const BaseRouter = Brisket.Router.extend({
 
-	layout: Layout,
+  layout: Layout,
 
-	errorViewMapping: Brisket.ErrorViewMapping.create({
+  errorViewMapping: {
 
-		404: PageNotFoundView,
+    404: PageNotFoundView,
 
-		500: DefaultErrorView
+    500: DefaultErrorView
 
-	}),
+  },
 
   onRouteComplete(layout, request) {
     console.log('ClientApp rendered ' + request.path);
