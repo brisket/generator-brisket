@@ -1,10 +1,7 @@
-import { Layout } from 'brisket';
 import BaseRouter from '../routing/BaseRouter';
 import MacAndCheeseView from './MacAndCheeseView';
 import Side from './Side';
 import SideView from './SideView';
-
-const Metatags = Layout.Metatags;
 
 const SidesRouter = BaseRouter.extend({
 
@@ -15,15 +12,15 @@ const SidesRouter = BaseRouter.extend({
   },
 
   eatMacAndCheese(setLayoutData) {
-    setLayoutData('pageType', 'cheese');
+    setLayoutData({
+      pageType: 'cheese',
+      title: 'Mac and Cheese',
+      metatags: {
+        description: 'Keep calm and eat Mac and Cheese'
+      }
+    });
 
-    return new MacAndCheeseView()
-      .withTitle('Mac and Cheese')
-      .withMetatags([
-        new Metatags({
-          'description': 'Keep calm and eat Mac and Cheese'
-        })
-      ]);
+    return new MacAndCheeseView();
   },
 
   eatGreens(setLayoutData, request) {
@@ -39,10 +36,12 @@ const SidesRouter = BaseRouter.extend({
 
     return side.fetch()
       .then(function() {
-        setLayoutData('pageType', 'side');
+        setLayoutData({
+          pageType: 'side',
+          title: side.get('name')
+        });
 
-        return new SideView({ model: side })
-          .withTitle(side.get('name'));
+        return new SideView({ model: side });
       });
   }
 
