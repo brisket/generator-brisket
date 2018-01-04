@@ -1,10 +1,8 @@
 {
   "name": "generator-brisket",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Brisket generator",
-  "license": "MIT",
   "main": "app/index.js",
-  "repository": "wawjr3d/generator-brisket",
   "author": {
     "name": "Wayne Warner",
     "email": "wawjr3d@gmail.com",
@@ -36,5 +34,10 @@
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brisket/generator-brisket.git"
+  },
+  "license": "MIT"
 }
